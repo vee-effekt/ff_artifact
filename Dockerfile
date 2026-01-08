@@ -67,7 +67,8 @@ ENV PATH="/root/.opam/4.14.1+BER/bin:${PATH}"
 # Set working directory
 WORKDIR /ff_artifact
 
-# Copy and extract tarballs
+# Copy and extract tarballs (use --build-arg CACHEBUST=$(date +%s) to force refresh)
+ARG CACHEBUST=1
 COPY releases/*.tar.gz /tmp/
 RUN mkdir -p artifact && cd artifact && \
     for tarball in /tmp/*.tar.gz; do tar -xzf "$tarball"; done && \
