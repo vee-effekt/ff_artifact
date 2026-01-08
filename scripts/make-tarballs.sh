@@ -48,15 +48,6 @@ tar -czf "$OUTPUT_DIR/waffle-house-${TIMESTAMP}.tar.gz" \
 echo "✓ Created: waffle-house-${TIMESTAMP}.tar.gz"
 echo ""
 
-# Package analysis
-echo "[4/4] Packaging analysis..."
-tar -czf "$OUTPUT_DIR/analysis-${TIMESTAMP}.tar.gz" \
-    --exclude='analysis/**/__pycache__' \
-    --exclude='analysis/figures' \
-    analysis/
-echo "✓ Created: analysis-${TIMESTAMP}.tar.gz"
-echo ""
-
 echo "=== Packaging complete! ==="
 echo ""
 echo "Archives created in: $OUTPUT_DIR"
