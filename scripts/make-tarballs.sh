@@ -1,12 +1,17 @@
 #!/bin/bash
 # Package ff_artifact repositories into distributable tarballs
-# Run this from /home/ubuntu/ff_artifact
+# Run this from /home/ubuntu/ff_artifact/repos
 
 set -e
 
-ARTIFACT_DIR="$(pwd)"
-OUTPUT_DIR="$ARTIFACT_DIR/releases"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ARTIFACT_ROOT="$(dirname "$SCRIPT_DIR")"
+REPOS_DIR="$ARTIFACT_ROOT/repos"
+OUTPUT_DIR="$ARTIFACT_ROOT/releases"
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+
+# Change to repos directory
+cd "$REPOS_DIR"
 
 mkdir -p "$OUTPUT_DIR"
 
@@ -37,7 +42,7 @@ echo "✓ Created: eval-${TIMESTAMP}.tar.gz"
 echo ""
 
 # Package waffle-house
-echo "[3/3] Packaging waffle-house..."
+echo "[3/4] Packaging waffle-house..."
 tar -czf "$OUTPUT_DIR/waffle-house-${TIMESTAMP}.tar.gz" \
     --exclude='waffle-house/.git' \
     --exclude='waffle-house/**/_build' \
@@ -46,6 +51,15 @@ tar -czf "$OUTPUT_DIR/waffle-house-${TIMESTAMP}.tar.gz" \
     --exclude='waffle-house/**/target' \
     waffle-house/
 echo "✓ Created: waffle-house-${TIMESTAMP}.tar.gz"
+echo ""
+
+# Package unboxed-splitmix
+echo "[4/4] Packaging unboxed-splitmix..."
+tar -czf "$OUTPUT_DIR/unboxed-splitmix-${TIMESTAMP}.tar.gz" \
+    --exclude='unboxed-splitmix/.git' \
+    --exclude='unboxed-splitmix/_build' \
+    unboxed-splitmix/
+echo "✓ Created: unboxed-splitmix-${TIMESTAMP}.tar.gz"
 echo ""
 
 echo "=== Packaging complete! ==="
