@@ -1,0 +1,500 @@
+{
+    "swap_bc": {
+        "prop_DeleteInsert.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.0648822762481784,
+                "baseBespokestagedc": 1.6296948356807512,
+                "baseBespokestagedcsr": 1.5555680035850326
+            }
+        },
+        "prop_InsertDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.102793500091291,
+                "baseBespokestagedc": 3.1182240578213736,
+                "baseBespokestagedcsr": 2.9666011787819255
+            }
+        },
+        "prop_InsertModel.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.234375,
+                "baseBespokestagedc": 1.5991902834008098,
+                "baseBespokestagedcsr": 1.811926605504587
+            }
+        },
+        "prop_InsertValid.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.182642487046632,
+                "baseBespokestagedc": 1.645045045045045,
+                "baseBespokestagedcsr": 2.288220551378446
+            }
+        },
+        "prop_InsertPost.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1385202388852023,
+                "baseBespokestagedc": 1.9016348018841787,
+                "baseBespokestagedcsr": 1.9135647567266139
+            }
+        },
+        "prop_DeleteDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1584222040316923,
+                "baseBespokestagedc": 2.4042996732664736,
+                "baseBespokestagedcsr": 2.5310824091225133
+            }
+        },
+        "prop_InsertInsert.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.089206066012489,
+                "baseBespokestagedc": 1.8900928792569662,
+                "baseBespokestagedcsr": 2.083617747440273
+            }
+        },
+        "prop_DeleteModel.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1207386363636365,
+                "baseBespokestagedc": 4.035805626598465,
+                "baseBespokestagedcsr": 3.8347509113001217
+            }
+        },
+        "prop_DeleteValid.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1598810142214468,
+                "baseBespokestagedc": 1.423717088839831,
+                "baseBespokestagedcsr": 2.958426559004037
+            }
+        },
+        "prop_DeletePost.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1614064028445912,
+                "baseBespokestagedc": 1.742486436726101,
+                "baseBespokestagedcsr": 2.7417321151894
+            }
+        }
+    },
+    "no_balance_insert_1": {
+        "prop_DeleteInsert.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1113280530484435,
+                "baseBespokestagedc": 1.8719826248836486,
+                "baseBespokestagedcsr": 1.9119660286474838
+            }
+        },
+        "prop_InsertDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.113195342820181,
+                "baseBespokestagedc": 1.7573639148535074,
+                "baseBespokestagedcsr": 1.7865527429529666
+            }
+        },
+        "prop_InsertValid.txt": {
+            "RBT": {
+                "baseType": 1.0,
+                "baseStaged": 1.1202933016250496,
+                "baseStagedc": 6.902319902319903,
+                "baseStagedcsr": 7.28479381443299
+            }
+        }
+    },
+    "miscolor_balLeft": {
+        "prop_DeleteValid.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1472447803973362,
+                "baseBespokestagedc": 2.3805830903790093,
+                "baseBespokestagedcsr": 2.541996139717328
+            }
+        },
+        "prop_DeleteDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1445740658545123,
+                "baseBespokestagedc": 2.4009366677463895,
+                "baseBespokestagedcsr": 2.5565220792150813
+            }
+        }
+    },
+    "swap_cd": {
+        "prop_DeleteDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1621680860049504,
+                "baseBespokestagedc": 2.391770498115906,
+                "baseBespokestagedcsr": 2.5192249750851743
+            }
+        },
+        "prop_InsertDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.13609075868589,
+                "baseBespokestagedc": 1.805981364592726,
+                "baseBespokestagedcsr": 1.839008340347387,
+                "baseType": 1.0,
+                "baseStaged": 1.2406408571818004,
+                "baseStagedc": 2.609041505937692,
+                "baseStagedcsr": 2.711912072363387
+            }
+        },
+        "prop_InsertInsert.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.2011494252873562,
+                "baseBespokestagedc": 1.7416666666666665,
+                "baseBespokestagedcsr": 1.7131147540983604,
+                "baseType": 1.0,
+                "baseStaged": 1.1958168049044358,
+                "baseStagedc": 2.0619559072922553,
+                "baseStagedcsr": 2.093915040183697
+            }
+        },
+        "prop_DeleteValid.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.134686587968811,
+                "baseBespokestagedc": 2.137090819591435,
+                "baseBespokestagedcsr": 2.2868053726626285
+            }
+        },
+        "prop_InsertModel.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1457385801858808,
+                "baseBespokestagedc": 4.9268707482993195,
+                "baseBespokestagedcsr": 4.576619273301738,
+                "baseType": 1.0,
+                "baseStaged": 1.2561514501578952,
+                "baseStagedc": 2.762163763479085,
+                "baseStagedcsr": 2.8947407637379694
+            }
+        },
+        "prop_DeleteModel.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1119021540708287,
+                "baseBespokestagedc": 1.661710544264084,
+                "baseBespokestagedcsr": 1.6321007502679528
+            }
+        },
+        "prop_InsertValid.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.3995901639344264,
+                "baseBespokestagedc": 2.742971887550201,
+                "baseBespokestagedcsr": 2.869747899159664,
+                "baseType": 1.0,
+                "baseStaged": 1.2107491856677524,
+                "baseStagedc": 2.2695078764195875,
+                "baseStagedcsr": 2.3041160426481526
+            }
+        },
+        "prop_InsertPost.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1482715742352647,
+                "baseBespokestagedc": 1.8983636214127126,
+                "baseBespokestagedcsr": 1.8616240625755986,
+                "baseType": 1.0,
+                "baseStaged": 1.2839679033127915,
+                "baseStagedc": 3.167065561634839,
+                "baseStagedcsr": 3.33835647380819
+            }
+        },
+        "prop_DeletePost.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.170337731924544,
+                "baseBespokestagedc": 2.6222848795039178,
+                "baseBespokestagedcsr": 2.7672468067857423
+            }
+        },
+        "prop_DeleteInsert.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.147666287201171,
+                "baseBespokestagedc": 1.5650920381459303,
+                "baseBespokestagedcsr": 1.512430347192456,
+                "baseType": 1.0,
+                "baseStaged": 1.2429897855404184,
+                "baseStagedc": 2.6166830566711816,
+                "baseStagedcsr": 2.7098908201589658
+            }
+        }
+    },
+    "insert_2": {
+        "prop_DeleteInsert.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.0307692307692309,
+                "baseBespokestagedc": 3.753900709219858,
+                "baseBespokestagedcsr": 3.7143859649122803,
+                "baseType": 1.0,
+                "baseStaged": 1.0826421354245213,
+                "baseStagedc": 1.3351311140040916,
+                "baseStagedcsr": 1.3496897913141568
+            }
+        },
+        "prop_InsertPost.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1148148148148147,
+                "baseBespokestagedc": 1.4000000000000001,
+                "baseBespokestagedcsr": 1.4471153846153848,
+                "baseType": 1.0,
+                "baseStaged": 1.0895726495726497,
+                "baseStagedc": 5.523396880415945,
+                "baseStagedcsr": 5.726864330637915
+            }
+        },
+        "prop_InsertDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1705069124423964,
+                "baseBespokestagedc": 2.0991735537190084,
+                "baseBespokestagedcsr": 2.077709611451943,
+                "baseType": 1.0,
+                "baseStaged": 1.1749353262431734,
+                "baseStagedc": 1.9367004643229415,
+                "baseStagedcsr": 2.005888703503779
+            }
+        },
+        "prop_InsertModel.txt": {
+            "RBT": {
+                "baseType": 1.0,
+                "baseStaged": 1.2658662092624358,
+                "baseStagedc": 2.664259927797834,
+                "baseStagedcsr": 2.6077738515901063
+            }
+        }
+    },
+    "insert_3": {
+        "prop_InsertPost.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.0620997946115742,
+                "baseBespokestagedc": 1.4305939788445892,
+                "baseBespokestagedcsr": 1.4549817941079115,
+                "baseType": 1.0,
+                "baseStaged": 1.189788550799381,
+                "baseStagedc": 1.8492985971943887,
+                "baseStagedcsr": 1.9603455601189634
+            }
+        },
+        "prop_InsertInsert.txt": {
+            "RBT": {
+                "baseType": 1.0,
+                "baseStaged": 1.2545235223160434,
+                "baseStagedc": 1.9659735349716445,
+                "baseStagedcsr": 1.929499072356215
+            }
+        },
+        "prop_InsertDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.0980183704711686,
+                "baseBespokestagedc": 1.7810042764519243,
+                "baseBespokestagedcsr": 1.8271299179167846,
+                "baseType": 1.0,
+                "baseStaged": 1.243768697812112,
+                "baseStagedc": 2.5136709500205225,
+                "baseStagedcsr": 2.6162200351609353
+            }
+        }
+    },
+    "delete_4": {
+        "prop_DeleteDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.0838856894490927,
+                "baseBespokestagedc": 1.5661799340555818,
+                "baseBespokestagedcsr": 1.5703715365239295,
+                "baseType": 1.0,
+                "baseStaged": 1.3012438301017915,
+                "baseStagedc": 3.5547147148475693,
+                "baseStagedcsr": 2.8353153854446336
+            }
+        },
+        "prop_DeletePost.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.068075117370892,
+                "baseBespokestagedc": 1.903765690376569,
+                "baseBespokestagedcsr": 1.8801652892561984,
+                "baseType": 1.0,
+                "baseStaged": 1.1429408891060089,
+                "baseStagedc": 1.875581208914542,
+                "baseStagedcsr": 1.9111256330664925
+            }
+        }
+    },
+    "no_balance_insert_2": {
+        "prop_InsertDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.0594965675057209,
+                "baseBespokestagedc": 1.2875417130144604,
+                "baseBespokestagedcsr": 1.271745101629738
+            }
+        },
+        "prop_InsertValid.txt": {
+            "RBT": {
+                "baseType": 1.0,
+                "baseStaged": 1.0691382765531063,
+                "baseStagedc": 7.9865269461077855,
+                "baseStagedcsr": 8.454833597464342
+            }
+        },
+        "prop_DeleteInsert.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.138694332999809,
+                "baseBespokestagedc": 2.1699999382917934,
+                "baseBespokestagedcsr": 2.2514133155775227
+            }
+        }
+    },
+    "miscolor_join_1": {
+        "prop_DeleteValid.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1586577181208053,
+                "baseBespokestagedc": 2.403653374916462,
+                "baseBespokestagedcsr": 2.5574780753733113
+            }
+        }
+    },
+    "delete_5": {
+        "prop_DeletePost.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1385741005611179,
+                "baseBespokestagedc": 1.99373856083229,
+                "baseBespokestagedcsr": 2.0674258315852563,
+                "baseType": 1.0,
+                "baseStaged": 1.2930031761474188,
+                "baseStagedc": 3.5379556364597247,
+                "baseStagedcsr": 3.758556753909282
+            }
+        },
+        "prop_DeleteDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1624443138982719,
+                "baseBespokestagedc": 2.415569552648757,
+                "baseBespokestagedcsr": 2.549722829953156,
+                "baseType": 1.0,
+                "baseStaged": 1.2616150405808746,
+                "baseStagedc": 2.8073515223221794,
+                "baseStagedcsr": 2.935567073923238
+            }
+        },
+        "prop_DeleteInsert.txt": {
+            "RBT": {
+                "baseType": 1.0,
+                "baseStaged": 1.1087449025826914,
+                "baseStagedc": 1.3624721603563474,
+                "baseStagedcsr": 1.3830067822155236
+            }
+        },
+        "prop_DeleteModel.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.2053742802303262,
+                "baseBespokestagedc": 1.8802395209580838,
+                "baseBespokestagedcsr": 1.9442724458204335,
+                "baseType": 1.0,
+                "baseStaged": 1.209724316174887,
+                "baseStagedc": 2.1961876832844576,
+                "baseStagedcsr": 2.229090187518603
+            }
+        }
+    },
+    "miscolor_insert": {
+        "prop_InsertValid.txt": {
+            "RBT": {
+                "baseType": 1.0,
+                "baseStaged": 1.05,
+                "baseStagedc": 1.065217391304348,
+                "baseStagedcsr": 1.1221374045801524
+            }
+        },
+        "prop_DeleteInsert.txt": {
+            "RBT": {
+                "baseType": 1.0,
+                "baseStaged": 1.0896100029770766,
+                "baseStagedc": 1.4063400576368874,
+                "baseStagedcsr": 1.3458356315499171
+            }
+        }
+    },
+    "miscolor_delete": {
+        "prop_DeleteValid.txt": {
+            "RBT": {
+                "baseType": 1.0,
+                "baseStaged": 1.2073170731707317,
+                "baseStagedc": 1.5230769230769232,
+                "baseStagedcsr": 1.488721804511278
+            }
+        }
+    },
+    "insert_1": {
+        "prop_InsertPost.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.0970149253731343,
+                "baseBespokestagedc": 1.5154639175257731,
+                "baseBespokestagedcsr": 1.53125,
+                "baseType": 1.0,
+                "baseStaged": 1.1258278145695364,
+                "baseStagedc": 5.479094076655052,
+                "baseStagedcsr": 5.460069444444444
+            }
+        },
+        "prop_DeleteInsert.txt": {
+            "RBT": {
+                "baseType": 1.0,
+                "baseStaged": 1.1058201058201058,
+                "baseStagedc": 3.2874165872259296,
+                "baseStagedcsr": 3.5224719101123596
+            }
+        }
+    },
+    "miscolor_join_2": {
+        "prop_DeleteValid.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.0505172413793105,
+                "baseBespokestagedc": 3.415358744394619,
+                "baseBespokestagedcsr": 3.611736810906936
+            }
+        },
+        "prop_DeleteDelete.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1532542663764642,
+                "baseBespokestagedc": 2.341517728368852,
+                "baseBespokestagedcsr": 2.455021654448235
+            }
+        }
+    },
+    "miscolor_balRight": {
+        "prop_DeleteValid.txt": {
+            "RBT": {
+                "baseBespoke": 1.0,
+                "baseBespokestaged": 1.1315511587839717,
+                "baseBespokestagedc": 2.068895437455543,
+                "baseBespokestagedcsr": 2.1885413307535204
+            }
+        }
+    }
+}

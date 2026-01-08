@@ -1,0 +1,10 @@
+(executable
+ (public_name RBT)
+ (name main)
+ (libraries RBT ppx_staged core)
+ (preprocess (pps ppx_sexp_conv)))
+
+(env
+ (dev
+  (flags
+   (:standard -g -w "-26-27-32-33-34-37-39"))))
