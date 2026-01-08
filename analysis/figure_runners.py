@@ -3,8 +3,14 @@
 import sys
 import os
 
-# Add eval2 figure scripts to path
-sys.path.insert(0, '/home/ubuntu/eval2/figure_scripts')
+# Get the absolute path to the repository root
+# (parent directory of the 'analysis' directory containing this script)
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.dirname(SCRIPT_DIR)
+
+# Add eval figure scripts to path
+FIGURE_SCRIPTS_DIR = os.path.join(REPO_ROOT, 'eval', 'figure_scripts')
+sys.path.insert(0, FIGURE_SCRIPTS_DIR)
 
 from utils import intercept_plot_show
 
@@ -60,7 +66,8 @@ def run_ocaml_speedups_plot(output_path=None, format='png'):
     """
     def plot():
         # f17 has all code at module level, execute as script
-        with open('/home/ubuntu/eval2/figure_scripts/f17.py') as f:
+        f17_path = os.path.join(FIGURE_SCRIPTS_DIR, 'f17.py')
+        with open(f17_path) as f:
             code = f.read()
         exec(code, {'__name__': '__main__'})
 
@@ -80,7 +87,8 @@ def run_etna_plot(data_dir, output_path=None, format='png'):
         old_argv = sys.argv
         try:
             sys.argv = ['f18.py', '--dir', data_dir]
-            with open('/home/ubuntu/eval2/figure_scripts/f18.py') as f:
+            f18_path = os.path.join(FIGURE_SCRIPTS_DIR, 'f18.py')
+            with open(f18_path) as f:
                 code = f.read()
             exec(code, {'__name__': '__main__'})
         finally:

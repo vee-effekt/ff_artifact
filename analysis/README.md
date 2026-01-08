@@ -5,22 +5,22 @@ A unified CLI tool to generate figures from eval scripts using either precompute
 ## Quick Start
 
 ```bash
-cd /home/ubuntu/analysis
+cd /home/ubuntu/ff_artifact/analysis
 
 # Generate a single figure from precomputed data
-python analysis.py plot-ocaml --data-dir /home/ubuntu/eval/parsed_4.1_data_ocaml
+python analysis.py plot-ocaml --data-dir ../eval/parsed_4.1_data_ocaml
 
 # Save to file instead of displaying
 python analysis.py plot-ocaml \
-  --data-dir /home/ubuntu/eval/parsed_4.1_data_ocaml \
-  --output /tmp/figure14.png
+  --data-dir ../eval/parsed_4.1_data_ocaml \
+  --output figures/figure14.png
 
 # Generate all figures at once
-python analysis.py plot-all \
-  --ocaml-dir /home/ubuntu/eval/parsed_4.1_data_ocaml \
-  --scala-dir /home/ubuntu/eval/parsed_4.1_data_scala \
-  --etna-dir /home/ubuntu/eval/parsed_4.2_data/speedups \
-  --output-dir /tmp/figures
+python3 analysis.py plot-all \
+  --ocaml-dir ../eval/parsed_4.1_data_ocaml \
+  --scala-dir ../eval/parsed_4.1_data_scala \
+  --etna-dir ../eval/parsed_4.2_data/speedups \
+  --output-dir figures/
 ```
 
 ## Commands
@@ -143,9 +143,14 @@ All data files must be valid JSON with the following structure:
 
 The precomputed data from eval is located at:
 
-- **OCaml:** `/home/ubuntu/eval/parsed_4.1_data_ocaml/`
-- **Scala:** `/home/ubuntu/eval/parsed_4.1_data_scala/`
-- **Etna:** `/home/ubuntu/eval/parsed_4.2_data/speedups/`
+- **OCaml:** `/home/ubuntu/ff_artifact/eval/parsed_4.1_data_ocaml/`
+- **Scala:** `/home/ubuntu/ff_artifact/eval/parsed_4.1_data_scala/`
+- **Etna:** `/home/ubuntu/ff_artifact/eval/parsed_4.2_data/speedups/`
+
+When running from the `analysis/` directory, use relative paths:
+- **OCaml:** `../eval/parsed_4.1_data_ocaml/`
+- **Scala:** `../eval/parsed_4.1_data_scala/`
+- **Etna:** `../eval/parsed_4.2_data/speedups/`
 
 See `examples/precomputed_data.sh` for a complete example.
 

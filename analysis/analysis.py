@@ -25,23 +25,23 @@ def generate_output_path(output_dir, figure_name, format='png'):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Generate figures from eval2 scripts using precomputed or user-generated data',
+        description='Generate figures from eval scripts using precomputed or user-generated data',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog='''
 Examples:
   # Plot OCaml benchmarks from precomputed data
-  python analysis.py plot-ocaml --data-dir /home/ubuntu/eval2/parsed_4.1_data_ocaml
+  python analysis.py plot-ocaml --data-dir eval/parsed_4.1_data_ocaml
 
   # Save figure to file
   python analysis.py plot-ocaml \\
-    --data-dir /home/ubuntu/eval2/parsed_4.1_data_ocaml \\
+    --data-dir eval/parsed_4.1_data_ocaml \\
     --output /tmp/figure14.png
 
   # Plot all figures at once
   python analysis.py plot-all \\
-    --ocaml-dir /home/ubuntu/eval2/parsed_4.1_data_ocaml \\
-    --scala-dir /home/ubuntu/eval2/parsed_4.1_data_scala \\
-    --etna-dir /home/ubuntu/eval2/parsed_4.2_data/speedups
+    --ocaml-dir eval/parsed_4.1_data_ocaml \\
+    --scala-dir eval/parsed_4.1_data_scala \\
+    --etna-dir eval/parsed_4.2_data/speedups
 
   # Validate data before plotting
   python analysis.py validate --figure ocaml --data-dir /path/to/data

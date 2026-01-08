@@ -1,7 +1,7 @@
 #!/bin/bash
-# Example: Generate all figures using precomputed data from eval2
+# Example: Generate all figures using precomputed data from eval
 
-cd /home/ubuntu/analysis
+cd /home/ubuntu/ff_artifact/analysis
 
 echo "=== Generating Figures from Precomputed Data ==="
 echo ""
@@ -9,14 +9,14 @@ echo ""
 # Figure 14: OCaml benchmarks
 echo "[1/4] Generating Figure 14 (OCaml benchmarks)..."
 python analysis.py plot-ocaml \
-  --data-dir /home/ubuntu/eval2/parsed_4.1_data_ocaml \
+  --data-dir ../eval/parsed_4.1_data_ocaml \
   --output /tmp/figure14_ocaml.png
 echo ""
 
 # Figure 16: Scala benchmarks
 echo "[2/4] Generating Figure 16 (Scala benchmarks)..."
 python analysis.py plot-scala \
-  --data-dir /home/ubuntu/eval2/parsed_4.1_data_scala \
+  --data-dir ../eval/parsed_4.1_data_scala \
   --output /tmp/figure16_scala.png
 echo ""
 
@@ -29,7 +29,7 @@ echo ""
 # Figure 18: Etna speedups
 echo "[4/4] Generating Figure 18 (Etna speedups)..."
 python analysis.py plot-etna \
-  --data-dir /home/ubuntu/eval2/parsed_4.2_data/speedups \
+  --data-dir ../eval/parsed_4.2_data/speedups \
   --output /tmp/figure18_etna.png
 echo ""
 

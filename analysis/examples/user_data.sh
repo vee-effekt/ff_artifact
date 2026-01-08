@@ -2,7 +2,7 @@
 # Example: Generate figures using user-generated data
 # This assumes you have already run experiments and parsed the results
 
-cd /home/ubuntu/analysis
+cd /home/ubuntu/ff_artifact/analysis
 
 echo "=== Validating User-Generated Data ==="
 echo ""
