@@ -42,6 +42,7 @@ RUN opam switch create 4.14.1+BER ocaml-variants.4.14.1+BER
 
 # Install OCaml dependencies
 RUN opam install -y --switch=4.14.1+BER \
+    base_quickcheck \
     dune \
     core \
     base_quickcheck \
@@ -64,55 +65,22 @@ ENV OCAML_TOPLEVEL_PATH="/root/.opam/4.14.1+BER/lib/toplevel"
 ENV PATH="/root/.opam/4.14.1+BER/bin:${PATH}"
 
 # Set working directory
-WORKDIR /artifact
+WORKDIR /ff_artifact
 
 # Copy and extract tarballs
 COPY releases/*.tar.gz /tmp/
-RUN cd /artifact && \
-    tar -xzf /tmp/etna-*.tar.gz && \
-    tar -xzf /tmp/eval-*.tar.gz && \
-    tar -xzf /tmp/waffle-house-*.tar.gz && \
-    tar -xzf /tmp/analysis-*.tar.gz && \
-    tar -xzf /tmp/unboxed-splitmix-*.tar.gz && \
+RUN mkdir -p artifact && cd artifact && \
+    for tarball in /tmp/*.tar.gz; do tar -xzf "$tarball"; done && \
     rm /tmp/*.tar.gz
 
-# Install unboxed-splitmix library (required by handwritten-ocaml)
-RUN cd /artifact/unboxed-splitmix && \
-    dune build && \
-    opam install . -y
+# Copy build script
+COPY scripts/build.sh artifact/build.sh
+RUN chmod +x artifact/build.sh
 
-# Install etna util library
-RUN cd /artifact/etna/workloads/OCaml/util && \
-    opam install . -y
-
-# Build etna OCaml workloads
-RUN cd /artifact/etna/workloads/OCaml/BST && dune build && \
-    cd /artifact/etna/workloads/OCaml/STLC && dune build && \
-    cd /artifact/etna/workloads/OCaml/RBT && dune build
-
-# Build waffle-house projects (in dependency order)
-# 1. Build staged-ocaml (creates fast_gen library)
-RUN cd /artifact/waffle-house/staged-ocaml && \
-    dune build && \
-    opam install . -y
-
-# 2. Build ppx_staged (depends on fast_gen)
-RUN cd /artifact/waffle-house/ppx_staged && \
-    dune build && \
-    opam install . -y
-
-# 3. Build handwritten-ocaml (depends on unboxed-splitmix)
-RUN cd /artifact/waffle-house/handwritten-ocaml && dune build
-
-# 4. Build staged-scala
-RUN cd /artifact/waffle-house/staged-scala && sbt compile
-
-# Install Python dependencies for etna
-RUN cd /artifact/etna && \
-    python3 -m pip install -r tool/requirements.txt && \
-    python3 -m pip install -e tool
+# Note: Build steps moved to artifact/build.sh script
+# Run the script inside the container to build all components
 
 # Create results directory
-RUN mkdir -p /artifact/results
+RUN mkdir -p artifact/results
 
 CMD ["/bin/bash"]
