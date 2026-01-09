@@ -76,7 +76,11 @@ RUN mkdir -p artifact && cd artifact && \
 
 # Copy build script
 COPY scripts/build.sh artifact/build.sh
-RUN chmod +x artifact/build.sh
+COPY scripts/run_ocaml.sh artifact/run_ocaml.sh
+COPY scripts/run_scala.sh artifact/run_scala.sh
+COPY scripts/run_etna.sh artifact/run_etna.sh
+
+RUN chmod +x artifact/build.sh artifact/run_ocaml.sh artifact/run_scala.sh artifact/run_etna.sh
 
 # Note: Build steps moved to artifact/build.sh script
 # Run the script inside the container to build all components

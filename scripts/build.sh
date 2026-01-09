@@ -42,11 +42,10 @@ echo ""
 echo "[6/6] Building and installing etna OCaml workloads..."
 cd /ff_artifact/artifact/etna/workloads/OCaml/BST && dune build && opam install . -y
 cd /ff_artifact/artifact/etna/workloads/OCaml/STLC && dune build && opam install . -y
-cd /ff_artifact/artifact/etna/workloads/OCaml/RBT && dune build && opam install . -y
 echo ""
 
 echo "=== Build complete! ==="
 echo ""
-echo "Note: Skipped components:"
-echo "  - unboxed-splitmix (requires OxCaml)"
-echo "  - staged-scala (can be built separately with: cd /ff_artifact/artifact/waffle-house/staged-scala && sbt compile)"
+
+cd /ff_artifact/artifact
+./build.sh

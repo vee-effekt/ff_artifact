@@ -3,7 +3,7 @@
 seeds=(42 3141592 1729 8675309 12345 12121212 987654321 31415 271828 123581321 7777777 1618033 2718281828 31337 8008135 112358 777 1234567890 999999 54321 101010 666 123321 9876543210 6174 1984 2001 867530999 314159265359 1010101010)
 
 # Create dedicated directory for this BST experiment run
-EXPERIMENT_DIR="bst-experiments-$(date +%Y%m%d-%H%M%S)"
+EXPERIMENT_DIR="/ff_artifact/artifact/results/bst-experiments-$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$EXPERIMENT_DIR"
 echo "All results will be saved to: $EXPERIMENT_DIR"
 echo ""
