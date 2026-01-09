@@ -31,7 +31,7 @@ RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | tee /etc/ap
     rm -rf /var/lib/apt/lists/*
 
 # Install Python packages for analysis
-RUN pip3 install --break-system-packages matplotlib numpy seaborn
+RUN pip3 install --break-system-packages matplotlib numpy seaborn scipy
 
 # OCaml setup - BER MetaOCaml 4.14.1
 # Initialize opam for root user
@@ -74,13 +74,11 @@ RUN mkdir -p artifact && cd artifact && \
     for tarball in /tmp/*.tar.gz; do tar -xzf "$tarball"; done && \
     rm /tmp/*.tar.gz
 
-# Copy build script
-COPY scripts/build.sh artifact/build.sh
-COPY scripts/run_ocaml.sh artifact/run_ocaml.sh
-COPY scripts/run_scala.sh artifact/run_scala.sh
-COPY scripts/run_etna.sh artifact/run_etna.sh
+# Copy all scripts
+COPY scripts/*.sh artifact/scripts/
 
-RUN chmod +x artifact/build.sh artifact/run_ocaml.sh artifact/run_scala.sh artifact/run_etna.sh
+# Make all scripts executable
+RUN chmod +x artifact/scripts/*.sh
 
 # Note: Build steps moved to artifact/build.sh script
 # Run the script inside the container to build all components
