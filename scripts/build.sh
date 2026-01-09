@@ -48,4 +48,10 @@ echo "=== Build complete! ==="
 echo ""
 
 cd /ff_artifact/artifact
-./build.sh
+./run_ocaml.sh
+
+cd /ff_artifact/artifact
+./run_scala.sh
+
+cd /ff_artifact/artifact
+./run_etna.sh
