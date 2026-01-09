@@ -53,15 +53,6 @@ tar -czf "$OUTPUT_DIR/waffle-house-${TIMESTAMP}.tar.gz" \
 echo "✓ Created: waffle-house-${TIMESTAMP}.tar.gz"
 echo ""
 
-# Package unboxed-splitmix
-echo "[4/4] Packaging unboxed-splitmix..."
-tar -czf "$OUTPUT_DIR/unboxed-splitmix-${TIMESTAMP}.tar.gz" \
-    --exclude='unboxed-splitmix/.git' \
-    --exclude='unboxed-splitmix/_build' \
-    unboxed-splitmix/
-echo "✓ Created: unboxed-splitmix-${TIMESTAMP}.tar.gz"
-echo ""
-
 echo "=== Packaging complete! ==="
 echo ""
 echo "Archives created in: $OUTPUT_DIR"
