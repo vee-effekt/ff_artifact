@@ -7,6 +7,12 @@ set -e
 echo "=== Building ff_artifact components ==="
 echo ""
 
+# Make all scripts executable
+echo "[0/6] Making scripts executable..."
+chmod +x /ff_artifact/artifact/scripts/*.sh
+chmod +x /ff_artifact/artifact/etna/*.sh
+echo ""
+
 # Ensure opam environment is set up
 eval $(opam env --switch=4.14.1+BER)
 
@@ -34,7 +40,7 @@ dune build @install
 opam install . -y
 echo ""
 
-echo "[5/6] Building etna util library..."
+echo "[5/6] Building Etna util library..."
 cd /ff_artifact/artifact/etna/workloads/OCaml/util
 opam install . -y
 echo ""
@@ -46,12 +52,18 @@ echo ""
 
 echo "=== Build complete! ==="
 echo ""
-
-cd /ff_artifact/artifact
-./run_ocaml.sh
-
-cd /ff_artifact/artifact
-./run_scala.sh
-
-cd /ff_artifact/artifact
-./run_etna.sh
+echo "Available commands (run from /ff_artifact/artifact):"
+echo ""
+echo "Run all benchmarks and generate all figures:"
+echo "  ./scripts/run_all.sh       - Run (and analyze) ALL benchmarks (OCaml, Scala, Etna)"
+echo "  ./scripts/analyze_all.sh   - Analyze ALL precomputed data"
+echo ""
+echo "Run individual benchmarks (fresh data):"
+echo "  ./scripts/run_ocaml.sh     - Run OCaml benchmarks"
+echo "  ./scripts/run_scala.sh     - Run Scala benchmarks"
+echo "  ./scripts/run_etna.sh      - Run Etna benchmarks"
+echo ""
+echo "Analyze individual datasets (precomputed data):"
+echo "  ./scripts/analyze_ocaml.sh - Generate figures from precomputed OCaml data"
+echo "  ./scripts/analyze_scala.sh - Generate figures from precomputed Scala data"
+echo "  ./scripts/analyze_etna.sh  - Generate figures from precomputed Etna data"
