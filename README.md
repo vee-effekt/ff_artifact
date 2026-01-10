@@ -12,10 +12,13 @@ First, I'll tell you how to use the artifact we've made available on Zenodo. The
 4. [Kick the Tires](#kick-the-tires)
 5. [Regenerate the Data](#regenerate-the-data)
 6. [Expected Outputs](#expected-outputs)
-7. [Troubleshooting](#troubleshooting)
+7. [Further Use](#further-use)
+8. [Troubleshooting](#troubleshooting)
 
 ## Requirements
-Nothing is *that* resource intensive here; I was able to run all the experiments inside the Docker container on my Apple M3 Pro with 18 GB of RAM, but I'm not sure how low you can go. You'll need Docker, and it might be nice to have the Dev Containers extension for VSCode; I'm using Docker version 28.4.0 on macOS.
+Nothing is *that* resource intensive here; I was able to run all the experiments inside the Docker container on my Apple M3 Pro with 18 GB of RAM, but I'm not sure how low you can go. You'll need Docker, and it might be nice to have the Dev Containers extension for VSCode. I'm using Docker version 28.4.0 on macOS.
+
+You'll also need like 12 GB of Disk space. (Sorry.)
 
 ## Getting Started
 
@@ -40,7 +43,7 @@ cd artifact/scripts
 ./build.sh
 ```
 
-This will run the build script, which chooses the right opam switch---the one with MetaOCaml---and installs a bunch of local OCaml packages and builds the projects and some other stuff. It will tell you what it's doing as it does it.
+This will run the build script, which chooses the right opam switch (the one with MetaOCaml), and installs a bunch of local OCaml packages and builds the projects and some other stuff. It will tell you what it's doing as it does it.
 
 At this point, the container is set up for experiments.
 
@@ -109,7 +112,7 @@ You should see the following files:
 
 Notably, Fig. 15 is omitted. The reason for this is that it consists of a total of 8 datapoints, and so the process of creating it was not automated at all. As I recall, we altered the randomness library to increment a counter whenever it was called; then we counted the number of binds by analyzing the program in [`magic-trace`](https://github.com/janestreet/magic-trace). I really don't know how to begin automating this process; if I unexpectedly have the spare time before the artifact deadline maybe I'll come back to it, but if this text is still here... then I guess you know what happened. If you want to see the code for generating the figure itself, it's in `eval/figure_scripts/fig15.py`. Sorry!
 
-Also, **if you want to generate results for a subset of the data**, there are bash scripts that go slightly more graular---`analyze_ocaml.sh`, `analyze_scala.sh`, and `analyze_etna.sh`.
+Also, **if you want to generate results for a subset of the data**, there are bash scripts that go slightly more graular: `analyze_ocaml.sh`, `analyze_scala.sh`, and `analyze_etna.sh`.
 
 ### Regenerate the Data
 
@@ -137,6 +140,20 @@ To remove all fresh data and start over:
 cd ff_artifact/artifact/scripts
 ./clean_fresh.sh
 ```
+
+## Expected Outputs
+
+After evaluating, you should have eight figures: 4 using precomputed data and 4 using data you generated. I don't know exactly what the latter will look like, but the former should definitely look like this:
+
+TODO: FIGGGGGGSSSSSS :-)
+
+## Further Use
+
+Ooooooooffffff, do you really want to run this on your computer? I hope not. No-one who authored this paper was able to run this thing on their computer: we used an EC2 metal instance, since we all have Macs. This was both annoying and unnecessarily expensive, but MetaOCaml, the OCaml metaprogramming extension this whole thing is based on, only works on x86 (at least at time of development). 
+
+I don't know if using MetaOCaml was the right choice. I think initially we were going to use [ppx_stage](https://github.com/stedolan/ppx_stage), but then we had some problems with that, and then we switched to MetaOCaml, which probably has worse problems if anything... but they emerged later, once we were already too committed.
+
+Anyway. Running this on your computer.
 
 ## Contact
 
