@@ -53,7 +53,7 @@ Inside the container (`/ff_artifact/artifact/`) the directory structure should l
 
 ```
 artifact/
-├── scripts/                    # Pipeline scripts
+├── scripts/                   # Pipeline scripts
 │   ├── analyze_all.sh         # Analyze all precomputed data
 │   ├── analyze_ocaml.sh       # Analyze precomputed OCaml data
 │   ├── analyze_scala.sh       # Analyze precomputed Scala data
@@ -82,7 +82,7 @@ artifact/
 │   ├── parsers/               # Data parsing scripts
 │   ├── etna_data_processing/  # Etna-specific processing
 │   └── figure_scripts/        # Figure generation scripts
-├── etna/                       # Etna itself
+├── etna/                      # Etna itself
 ├── waffle-house/              # This is Allegro; its development name was Waffle House
     ├── ... unimportant; ignore ... 
 │   ├── staged-ocaml/          # AllegrOCaml 
@@ -147,6 +147,8 @@ After evaluating, you should have eight figures: 4 using precomputed data and 4 
 
 TODO: FIGGGGGGSSSSSS :-)
 
+Something to note is that this is a performance evaluation inside a Docker container, which is not an ideal state of affairs. Docker introduces emulation overhead, and even aside from that, computers are complicated and sometimes they do weird things. If you make the graphs and most things look normal but some individual datapoints look weird, there was probably a context switch or a GC pause or something like that. In particular, I've noticed this happening in Fig. 14's BST workload, which involves a lot more input generation than the other workloads. (I have done everything I can to prevent this from happening: the process is pinned to a single CPU core, and I force a full garbage collection between each workload, but it still happens now and then.) Try regenerating the data.
+
 ## Further Use
 
 Ooooooooffffff, do you really want to run this on your computer? I hope not. No-one who authored this paper was able to run this thing on their computer: we used an EC2 metal instance, since we all have Macs. This was both annoying and unnecessarily expensive, but MetaOCaml, the OCaml metaprogramming extension this whole thing is based on, only works on x86 (at least at time of development). 
@@ -154,6 +156,8 @@ Ooooooooffffff, do you really want to run this on your computer? I hope not. No-
 I don't know if using MetaOCaml was the right choice. I think initially we were going to use [ppx_stage](https://github.com/stedolan/ppx_stage), but then we had some problems with that, and then we switched to MetaOCaml, which probably has worse problems if anything... but they emerged later, once we were already too committed.
 
 Anyway. Running this on your computer.
+
+TODO
 
 ## Contact
 
