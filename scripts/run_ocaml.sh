@@ -21,7 +21,7 @@ echo ""
 echo "Step 2: Running OCaml benchmarks..."
 echo "  - Pinning to CPU core 0 for consistent timing"
 mkdir -p "$OUTPUT_DIR"
-taskset -c 0 dune runtest > "$OUTPUT_DIR/results_ocaml.txt" 2>&1
+taskset -c 0 dune runtest --force > "$OUTPUT_DIR/results_ocaml.txt" 2>&1
 echo "  - Raw results saved to: $OUTPUT_DIR/results_ocaml.txt"
 echo ""
 
