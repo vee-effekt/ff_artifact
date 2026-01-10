@@ -149,7 +149,7 @@ After evaluating, you should have eight figures: 4 using precomputed data and 4 
 
 TODO: FIGGGGGGSSSSSS :-)
 
-Something to note is that this is a performance evaluation inside a Docker container, which is not an ideal state of affairs. Docker introduces emulation overhead, and even aside from that, computers are complicated and sometimes do weird things. In particular, I have noticed that individual datapoints in the OCaml microbenchmarks occasionally take much longer than they're supposed to. I have done everything I can to prevent this from happening: the process is pinned to a single CPU core, and I force a full garbage collection between each workload, but it still happens sometimes. If this happens, you can generate data for that individual workload (e.g., repeat-insert BST) using the commands in `./run_ocaml.sh`. Here's an example:
+Something to note is that this is a performance evaluation inside a Docker container, which is not an ideal state of affairs. Docker introduces emulation overhead, and even aside from that, computers are complicated and sometimes do weird things. In particular, I have noticed that individual datapoints in the OCaml microbenchmarks occasionally take much longer than they're supposed to. I have done everything I can to prevent this from happening: the process is pinned to a single CPU core, and I force a full garbage collection between each workload. It still happens sometimes. If something looks "off," you can generate data for that individual workload (e.g., repeat-insert BST) using the commands in `./run_ocaml.sh`. Here's an example:
 
 ```bash
 taskset -c 0 dune exec /ff_artifact/artifact/waffle-house/staged-ocaml/_build/default/test/bst_benchmark.exe > "$OUTPUT_DIR/results_bst.txt" 2>&1
