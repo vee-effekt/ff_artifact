@@ -17,9 +17,9 @@ First, I'll tell you how to use the artifact we've made available on Zenodo. The
 9. [Contact](#contact)
 
 ## Requirements
-Nothing is *that* resource intensive here; I was able to run all the experiments inside the Docker container on my Apple M3 Pro with 18 GB of RAM, but I'm not sure how low you can go. You'll need Docker, and it might be nice to have the Dev Containers extension for VSCode. I'm using Docker version 28.4.0 on macOS.
+I was able to run all the experiments inside the Docker container on my Apple M3 Pro with 18 GB of RAM, but I'm not sure how low you can go. You'll need Docker, and it might be nice to have the Dev Containers extension for VSCode. I'm using Docker version 28.4.0 on macOS.
 
-You'll also need like 12 GB of Disk space. (Sorry.)
+You need a lot of disk space. Like, 25GB, to be safe.
 
 ## Getting Started
 
