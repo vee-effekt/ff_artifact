@@ -1,124 +1,144 @@
-# ff_artifact
+# Fail Faster: Staging and Fast Randomness for High-Performance Property-Based Testing
 
-## Quick Start
+Hi! You've found the artifact for *Fail Faster: Staging and Fast Randomness for High-Performance Property-Based Testing*. If you're here to review it, I hope I can make your job relatively painless.
 
-### Step 1: Build the Docker image
+First, I'll tell you how to use the artifact we've made available on Zenodo. Then we'll get into how you might run this on your computer.
+
+## Table of Contents
+
+1. [Requirements](#requirements)
+2. [Getting Started](#getting-started)
+3. [Directory Structure](#directory-structure)
+4. [Kick the Tires](#kick-the-tires)
+5. [Regenerate the Data](#regenerate-the-data)
+6. [Expected Outputs](#expected-outputs)
+7. [Troubleshooting](#troubleshooting)
+
+## Requirements
+Nothing is *that* resource intensive here; I was able to run all the experiments inside the Docker container on my Apple M3 Pro with 18 GB of RAM, but I'm not sure how low you can go. You'll need Docker, and it might be nice to have the Dev Containers extension for VSCode; I'm using Docker version 28.4.0 on macOS.
+
+## Getting Started
+
+First, clone this repository. I assume you know how to do this. This repository contains a bunch of tarballs of other repositories I didn't want you to have to worry about, plus some scripts. It also contains a `Dockerfile`, which is the first thing you'll need to run. You can do so using this command (from the `ff_artifact` directory):
 
 ```bash
-cd /home/ubuntu/ff_artifact
 sudo docker build -t ff-artifact:latest .
 ```
 
-If you've modified the tarballs and need to force a refresh:
-
-```bash
-sudo docker build --build-arg CACHEBUST=$(date +%s) -t ff-artifact:latest .
-```
-
-### Step 2: Run the container
+Now, you should run the container:
 
 ```bash
 sudo docker run -it ff-artifact:latest
 ```
 
-This drops you into a bash shell inside the container at `/ff_artifact`.
+This will drop you into a bash shell inside the container at `/ff_artifact`. At this time, it may behoove you to attach your IDE to the container, but I'll leave that up to you. You *can* continue from the command line if you want.
 
-### Step 3: Run the build script
-
-Inside the container:
+Now, you'll want to run this series of commands: 
 
 ```bash
-./artifact/build.sh
+cd artifact/scripts
+./build.sh
 ```
 
-This will:
-1. Install ppx_show (missing OCaml dependency)
-2. Install benchtool Python package
-3. Build and install staged-ocaml
-4. Build and install ppx_staged
-5. Build and install etna util library
-6. Build and install BST, STLC, and RBT workloads
+This will run the build script, which chooses the right opam switch---the one with MetaOCaml---and installs a bunch of local OCaml packages and builds the projects and some other stuff. It will tell you what it's doing as it does it.
 
-Wait for the build to complete (takes several minutes).
-
-### Step 4: Run the experiments
-
-After the build completes, run the experiments:
-
-```bash
-cd /ff_artifact/artifact/etna
-./bash-bst.sh      # BST experiments
-./bash-stlc.sh     # STLC experiments (if available)
-```
-
-Results will be saved to a timestamped directory like `bst-experiments-YYYYMMDD-HHMMSS/`.
-
----
-
-## Regenerating Tarballs
-
-If you modify source files in `/home/ubuntu/ff_artifact/repos/`, you need to regenerate the tarballs:
-
-```bash
-cd /home/ubuntu/ff_artifact
-./scripts/make-tarballs.sh
-```
-
-Then rebuild the Docker image with cache bust:
-
-```bash
-sudo docker build --build-arg CACHEBUST=$(date +%s) -t ff-artifact:latest .
-```
-
----
+At this point, the container is set up for experiments.
 
 ## Directory Structure
 
-```
-ff_artifact/
-├── Dockerfile           # Docker build configuration
-├── releases/            # Generated tarballs (copied into container)
-├── repos/               # Source repositories
-│   ├── etna/           # Etna benchmarking framework
-│   ├── waffle-house/   # Staged OCaml libraries
-│   └── ...
-├── scripts/
-│   ├── build.sh        # Build script (runs inside container)
-│   └── make-tarballs.sh # Regenerates release tarballs
-└── artifact/            # (empty on host, populated in container)
-```
-
-Inside the container:
+Inside the container (`/ff_artifact/artifact/`) the directory structure should look like this:
 
 ```
-/ff_artifact/
-└── artifact/
-    ├── build.sh         # Build script
-    ├── etna/            # Extracted etna
-    ├── waffle-house/    # Extracted waffle-house
-    ├── eval/            # Evaluation scripts
-    └── results/         # Output directory
+artifact/
+├── scripts/                    # Pipeline scripts
+│   ├── analyze_all.sh         # Analyze all precomputed data
+│   ├── analyze_ocaml.sh       # Analyze precomputed OCaml data
+│   ├── analyze_scala.sh       # Analyze precomputed Scala data
+│   ├── analyze_etna.sh        # Analyze precomputed Etna data
+│   ├── run_all.sh             # Run all experiments
+│   ├── run_ocaml.sh           # Run OCaml benchmarks
+│   ├── run_scala.sh           # Run Scala benchmarks
+│   ├── run_etna.sh            # Run ETNA experiments
+│   └── clean_fresh.sh         # Clean all generated data (in case you need to do that)
+├── eval/
+│   ├── 4.1_data_ocaml/        # Raw OCaml benchmark output
+│   │   ├── precomputed/
+│   │   └── fresh/
+│   ├── 4.1_data_scala/        # Raw Scala benchmark output
+│   │   ├── precomputed/
+│   │   └── fresh/
+│   ├── 4.2_data/              # Raw Etna benchmark output
+│   │   ├── precomputed/
+│   │   │   ├── bst-experiments/
+│   │   │   └── stlc-experiments/
+│   │   └── fresh/
+│   ├── parsed_*/              # Parsed intermediate data (should initially be empty)
+│   ├── figures/               # Generated figures (ditto)
+│   │   ├── precomputed/
+│   │   └── fresh/
+│   ├── parsers/               # Data parsing scripts
+│   ├── etna_data_processing/  # Etna-specific processing
+│   └── figure_scripts/        # Figure generation scripts
+├── etna/                       # Etna itself
+├── waffle-house/              # This is Allegro; its development name was Waffle House
+    ├── ... unimportant; ignore ... 
+│   ├── staged-ocaml/          # AllegrOCaml 
+│   ├── staged-scala/          # ScAllegro
+│   └── ppx_staged/            # AllegrOCaml staged type-derived generators
+└── build.sh                   # Initial build script
 ```
 
----
+## Kick the Tires
 
-## Troubleshooting
+Initially, let's just make sure the data analysis is working correctly using precomputed data. You can do this by running the following command:
 
-### "No module named 'benchtool'"
-You forgot to run the build script. Run `./artifact/build.sh` first.
+```bash
+./analyze_all.sh
+```
 
-### "Unbound module BST"
-The BST library wasn't installed properly. Ensure step 3 completed without errors.
+This will generate figures for the OCaml microbenchmarks (Fig. 14), the Scala microbenchmarks (Fig. 16), and the Etna benchmarks (Fig. 17 and 18).
 
-### Docker caching old tarballs
-Use `--build-arg CACHEBUST=$(date +%s)` when building to force refresh.
+The precomputed data can be found in the `precomputed/` subdirectories of `ff_artifact/artifact/eval/4.1_data_ocaml`, `.../4.1_data_scala`, and `.../4.2_data`. This is what gets parsed, analyzed, and turned into graphs, which live in `.../figures/precomputed/...`.
 
----
+You should see the following files:
 
-## Skipped Components
+- `fig14.png` - OCaml benchmark timing comparison
+- `fig16.png` - Scala benchmark timing comparison
+- `fig17.png` - Etna geo mean speedups
+- `fig18.png` - Etna speedup distribution box plots
 
-- **unboxed-splitmix**: Requires OxCaml (not BER MetaOCaml)
-- **staged-scala**: Can be built separately with:
-  ```bash
-  cd /ff_artifact/artifact/waffle-house/staged-scala && sbt compile
-  ```
+Notably, Fig. 15 is omitted. The reason for this is that it consists of a total of 8 datapoints, and so the process of creating it was not automated at all. As I recall, we altered the randomness library to increment a counter whenever it was called; then we counted the number of binds by analyzing the program in [`magic-trace`](https://github.com/janestreet/magic-trace). I really don't know how to begin automating this process; if I unexpectedly have the spare time before the artifact deadline maybe I'll come back to it, but if this text is still here... then I guess you know what happened. If you want to see the code for generating the figure itself, it's in `eval/figure_scripts/fig15.py`. Sorry!
+
+Also, **if you want to generate results for a subset of the data**, there are bash scripts that go slightly more graular---`analyze_ocaml.sh`, `analyze_scala.sh`, and `analyze_etna.sh`.
+
+### Regenerate the Data
+
+To regenerate the data, you'll want the following command (from `/ff_artifact/artifact/scripts`):
+
+```bash
+./run_all.sh
+```
+
+This will probably take several hours. Maybe overnight. 
+
+If you want less commitment, you can do `run_ocaml.sh`, `run_scala.sh`, or `run_etna.sh`, which do what you would expect. Once run, these will populate the `fresh/` directories of their respective subdirectories (`4.1_data_ocaml`, `4.1_data_scala`, and `4.2_data`) with raw data. This data will then be analyzed. You should be able to find the relevant figures in `/ff_artifact/artifact/eval/figures/fresh/`. 
+
+If you want, you can copy figures out of the container:
+```bash
+# From another terminal (outside the container)
+sudo docker cp <container_id>:/ff_artifact/artifact/eval/figures/precomputed/ ./figures/
+```
+
+(To find your container ID: `sudo docker ps`.)
+
+To remove all fresh data and start over:
+
+```bash
+cd ff_artifact/artifact/scripts
+./clean_fresh.sh
+```
+
+## Contact
+
+For questions or issues with this artifact, please open an issue on the repository. Or just [email me](mailto:lapwing@seas.upenn.edu), I guess; it might be faster.
+
