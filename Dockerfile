@@ -83,7 +83,4 @@ RUN chmod +x artifact/scripts/*.sh
 # Note: Build steps moved to artifact/build.sh script
 # Run the script inside the container to build all components
 
-# Create results directory
-RUN mkdir -p artifact/results
-
 CMD ["/bin/bash"]
