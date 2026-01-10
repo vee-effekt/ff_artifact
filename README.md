@@ -122,7 +122,7 @@ To regenerate the data, you'll want the following command (from `/ff_artifact/ar
 ./run_all.sh
 ```
 
-How long this takes to run depends on the number of cores you have available. On the 64-core machine we used to do the eval, it was pretty fast---maybe an hour. On my 11-core Mac, takes... many hours, in the neighborhood of all night.
+How long this takes to run depends on the number of cores you have available. On the 64-core machine we used to do the eval, it was pretty fast, maybe an hour. On my 11-core Mac, it takes... many hours, in the neighborhood of all night.
 
 If you want less commitment, you can do `run_ocaml.sh`, `run_scala.sh`, or `run_etna.sh`, which do what you would expect. Once run, these will populate the `fresh/` directories of their respective subdirectories (`4.1_data_ocaml`, `4.1_data_scala`, and `4.2_data`) with raw data. This data will then be analyzed. You should be able to find the relevant figures in `/ff_artifact/artifact/eval/figures/fresh/`.
 
