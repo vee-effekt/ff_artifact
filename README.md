@@ -14,6 +14,7 @@ First, I'll tell you how to use the artifact we've made available on Zenodo. The
 6. [Expected Outputs](#expected-outputs)
 7. [Further Use](#further-use)
 8. [Troubleshooting](#troubleshooting)
+9. [Contact](#contact)
 
 ## Requirements
 Nothing is *that* resource intensive here; I was able to run all the experiments inside the Docker container on my Apple M3 Pro with 18 GB of RAM, but I'm not sure how low you can go. You'll need Docker, and it might be nice to have the Dev Containers extension for VSCode. I'm using Docker version 28.4.0 on macOS.
@@ -171,6 +172,24 @@ I don't know if using MetaOCaml was the right choice. I think initially we were 
 Anyway. Running this on your computer.
 
 TODO
+
+## Troubleshooting
+
+### Something wrong with the tarballs?
+If you need access to the actual repositories, here they are: [Etna](https://github.com/vee-effekt/etna) (`git checkout debug`), [eval scripts](https://github.com/vee-effekt/eval), [Allegro](https://github.com/alpha-convert/waffle-house).
+
+You can regenerate the tarballs (from outside the container) using:
+
+```bash
+cd /ff_artifact/scripts
+./make-tarballs.sh
+```
+
+And you can force a refresh of the Docker build using:
+
+```bash
+sudo docker build --build-arg CACHEBUST=$(date +%s) -t ff-artifact:latest .
+```
 
 ## Contact
 
