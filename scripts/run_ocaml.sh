@@ -17,7 +17,16 @@ dune build
 echo "Build complete."
 echo ""
 
-# Step 2: Run benchmarks
+# Step 2: Measure compilation times
+echo "Step 3: Measuring compilation times..."
+cd "$ARTIFACT_DIR/waffle-house/staged-ocaml"
+COMPILE_OUTPUT_DIR="$EVAL_DIR/figures/fresh"
+mkdir -p "$COMPILE_OUTPUT_DIR"
+dune exec test_compile_time > "$COMPILE_OUTPUT_DIR/compilation_times.txt" 2>&1
+echo "  - Compilation times saved to: $COMPILE_OUTPUT_DIR/compilation_times.txt"
+echo ""
+
+# Step 3: Run benchmarks
 echo "Step 2: Running OCaml benchmarks..."
 echo "  - Pinning to CPU core 0 for consistent timing"
 mkdir -p "$OUTPUT_DIR"
@@ -41,15 +50,6 @@ echo "  - Running BoolList benchmark..."
 taskset -c 0 dune exec /ff_artifact/artifact/waffle-house/staged-ocaml/_build/default/test/boollist_benchmark.exe > "$OUTPUT_DIR/results_boollist.txt" 2>&1
 
 echo "  - All benchmarks complete. Results saved to: $OUTPUT_DIR/"
-echo ""
-
-# Step 3: Measure compilation times
-echo "Step 3: Measuring compilation times..."
-cd "$ARTIFACT_DIR/waffle-house/staged-ocaml"
-COMPILE_OUTPUT_DIR="$EVAL_DIR/figures/fresh"
-mkdir -p "$COMPILE_OUTPUT_DIR"
-dune exec test_compile_time > "$COMPILE_OUTPUT_DIR/compilation_times.txt" 2>&1
-echo "  - Compilation times saved to: $COMPILE_OUTPUT_DIR/compilation_times.txt"
 echo ""
 
 # Step 4: Parse benchmark results
