@@ -14,6 +14,7 @@ echo ""
 echo "Step 1: Building staged-ocaml project..."
 cd "$ARTIFACT_DIR/waffle-house/staged-ocaml"
 dune build
+dune build test/test_compile_time.exe
 echo "Build complete."
 echo ""
 
@@ -22,7 +23,7 @@ echo "Step 3: Measuring compilation times..."
 cd "$ARTIFACT_DIR/waffle-house/staged-ocaml"
 COMPILE_OUTPUT_DIR="$EVAL_DIR/figures/fresh"
 mkdir -p "$COMPILE_OUTPUT_DIR"
-dune exec test_compile_time > "$COMPILE_OUTPUT_DIR/compilation_times.txt" 2>&1
+dune exec /ff_artifact/artifact/waffle-house/staged-ocaml/_build/default/test/test_compile_time.exe > "$COMPILE_OUTPUT_DIR/compilation_times.txt" 2>&1
 echo "  - Compilation times saved to: $COMPILE_OUTPUT_DIR/compilation_times.txt"
 echo ""
 
