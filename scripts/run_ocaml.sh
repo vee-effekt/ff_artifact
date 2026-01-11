@@ -54,6 +54,8 @@ echo ""
 echo "Step 4: Generating figures..."
 python3 figure_scripts/f14.py --source fresh
 echo "  - Figure 14 saved to: $EVAL_DIR/figures/fresh/fig14.png"
+python3 figure_scripts/f15.py --source fresh
+echo "  - Figure 15 saved to: $EVAL_DIR/figures/fresh/fig15.png"
 echo ""
 
 echo "========================================"
@@ -64,3 +66,4 @@ echo "Output files:"
 echo "  - Raw results:  $OUTPUT_DIR/"
 echo "  - Parsed data:  $EVAL_DIR/parsed_4.1_data_ocaml/fresh/"
 echo "  - Figure 14:    $EVAL_DIR/figures/fresh/fig14.png"
+echo "  - Figure 15:    $EVAL_DIR/figures/fresh/fig15.png"
