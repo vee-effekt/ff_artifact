@@ -2,8 +2,6 @@
 
 Hi! You've found the artifact for *Fail Faster: Staging and Fast Randomness for High-Performance Property-Based Testing*. If you're here to review it, I hope I can make your job relatively painless.
 
-First, I'll tell you how to use the artifact we've made available on Zenodo. Then we'll get into how you might run this on your computer.
-
 ## Table of Contents
 
 1. [Requirements](#requirements)
@@ -123,13 +121,17 @@ To regenerate the data, you'll want the following command (from `/ff_artifact/ar
 ./run_all.sh
 ```
 
-How long this takes to run depends on the number of cores you have available. On the 64-core machine we used to do the eval, it was pretty fast, maybe an hour. On my 11-core Mac, it takes... many hours, in the neighborhood of all night.
+How long this takes to run depends on the number of cores you have available. On the 64-core machine we used to do the eval, it was pretty fast, maybe an hour. On my 11-core Mac, I ran it overnight and it was done in the morning.
 
 If you want less commitment, you can do `run_ocaml.sh`, `run_scala.sh`, or `run_etna.sh`, which do what you would expect. Once run, these will populate the `fresh/` directories of their respective subdirectories (`4.1_data_ocaml`, `4.1_data_scala`, and `4.2_data`) with raw data. This data will then be analyzed. You should be able to find the relevant figures in `/ff_artifact/artifact/eval/figures/fresh/`.
 
-I have noticed that 
+If you want to re-run the analysis scripts on fresh data, you can run commands like this:
 
-If you want, you can copy figures out of the container:
+```bash
+./analyze_{all, ocaml, scala, etna}.sh fresh
+```
+
+You can copy figures out of the container like this:
 ```bash
 # From another terminal (outside the container)
 sudo docker cp <container_id>:/ff_artifact/artifact/eval/figures/precomputed/ ./figures/
@@ -157,21 +159,14 @@ After evaluating, you should have eight figures: 4 using precomputed data and 4 
 **Fig. 18: Etna Speedup Distribution**
 ![Fig. 18](figs/fig18.png)
 
-Something to note is that this is a performance evaluation inside a Docker container, which is not an ideal state of affairs. Docker introduces emulation overhead, and even aside from that, computers are complicated and sometimes do weird things. In particular, I have noticed that individual datapoints in the OCaml microbenchmarks occasionally take much longer than they're supposed to. I have done everything I can to prevent this from happening: the process is pinned to a single CPU core, and I force a full garbage collection between each workload. It still happens sometimes. If something looks "off," you can generate data for that individual workload (e.g., repeat-insert BST) using the commands in `./run_ocaml.sh`. Here's an example:
+Something to note is that this is a performance evaluation inside a Docker container, which is not an ideal state of affairs. Docker introduces emulation overhead, and even aside from that, computers are complicated and sometimes do weird things. In particular, I have noticed that individual datapoints in the OCaml microbenchmarks occasionally take much longer than they're supposed to. I have done everything I can to prevent this from happening: the process is pinned to a single CPU core, and I force a full garbage collection between each workload. It still happens sometimes. If something looks "off," you can generate data for that individual workload (e.g., repeat-insert BST) using commands like this:
 
 ```bash
-taskset -c 0 dune exec /ff_artifact/artifact/waffle-house/staged-ocaml/_build/default/test/bst_benchmark.exe > "$OUTPUT_DIR/results_bst.txt" 2>&1
+taskset -c 0 dune exec --force /ff_artifact/artifact/waffle-house/staged-ocaml/_buil
+d/default/test/bst_type_benchmark.exe > /ff_artifact/artifact/eval/4.1_data_ocaml/fresh/results_bsttype.txt 2>&1
 ```
 
-## Further Use
-
-Ooooooooffffff, do you really want to run this on your computer? I hope not. No-one who authored this paper was able to run this thing on their computer: we used an EC2 metal instance, since we all have Macs. This was both annoying and unnecessarily expensive, but MetaOCaml, the OCaml metaprogramming extension this whole thing is based on, only works on x86 (at least at time of development). 
-
-I don't know if using MetaOCaml was the right choice. I think initially we were going to use [ppx_stage](https://github.com/stedolan/ppx_stage), but then we had some problems with that, and then we switched to MetaOCaml, which probably has worse problems if anything... but they emerged later, once we were already too committed.
-
-Anyway. Running this on your computer.
-
-TODO
+The names of the other executable files (in this case, we're using `bst_type_benchmark.exe`) are located in `run_ocaml.sh`.
 
 ## Troubleshooting
 
