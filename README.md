@@ -155,6 +155,8 @@ After evaluating, you should have eight figures: 4 using precomputed data and 4 
 
 **Fig. 14: OCaml Microbenchmarks**
 ![Fig. 14](figs/fig14.png)
+**Fig. 14: Speedups vs. Binds / Samples**
+![Fig. 15](figs/fig15.png)
 **Fig. 16: Scala Microbenchmarks**
 ![Fig. 16](figs/fig16.png)
 **Fig. 17: Etna Speedups**
