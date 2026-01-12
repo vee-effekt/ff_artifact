@@ -104,10 +104,12 @@ The precomputed data can be found in the `precomputed/` subdirectories of `ff_ar
 
 You should see the following files:
 
-- `fig14.png` - OCaml benchmark timing comparison
-- `fig16.png` - Scala benchmark timing comparison
-- `fig17.png` - Etna geo mean speedups
-- `fig18.png` - Etna speedup distribution box plots
+- `fig14.png`             - OCaml benchmark timing comparison
+- `fig16.png`             - Scala benchmark timing comparison
+- `fig15.png`             - Relationship between speedups and binds / samples
+- `fig17.png`             - Etna geo mean speedups
+- `fig18.png`             - Etna speedup distribution box plots
+- `compilation_times.txt` - Compilation times for the OCaml
 
 Notably, Fig. 15 is omitted. The reason for this is that it consists of a total of 8 datapoints, and so the process of creating it was not automated at all. As I recall, we altered the randomness library to increment a counter whenever it was called; then we counted the number of binds by analyzing the program in [`magic-trace`](https://github.com/janestreet/magic-trace). I really don't know how to begin automating this process; if I unexpectedly have the spare time before the artifact deadline maybe I'll come back to it, but if this text is still here... then I guess you know what happened. If you want to see the code for generating the figure itself, it's in `eval/figure_scripts/fig15.py`. Sorry!
 
